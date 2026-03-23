@@ -1,4 +1,4 @@
-export type JobSource = 'adzuna' | 'arbeitnow' | 'himalayas' | 'themuse' | 'remoteok' | 'stepstone';
+export type JobSource = 'adzuna' | 'arbeitnow' | 'himalayas' | 'themuse' | 'remoteok' | 'stepstone' | 'linkedin' | 'indeed';
 
 export interface Job {
   id: string;

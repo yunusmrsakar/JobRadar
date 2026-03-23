@@ -10,6 +10,8 @@ const SOURCE_CONFIG: Record<string, { label: string; color: string }> = {
   themuse: { label: 'The Muse', color: 'bg-pink-100 text-pink-700' },
   remoteok: { label: 'RemoteOK', color: 'bg-orange-100 text-orange-700' },
   stepstone: { label: 'StepStone', color: 'bg-teal-100 text-teal-700' },
+  linkedin: { label: 'LinkedIn', color: 'bg-sky-100 text-sky-700' },
+  indeed: { label: 'Indeed', color: 'bg-indigo-100 text-indigo-700' },
 };
 
 interface JobCardProps {

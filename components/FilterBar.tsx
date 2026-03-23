@@ -9,6 +9,8 @@ const SOURCE_LABELS: Record<JobSource, string> = {
   themuse: 'The Muse',
   remoteok: 'RemoteOK',
   stepstone: 'StepStone',
+  linkedin: 'LinkedIn',
+  indeed: 'Indeed',
 };
 
 type SortOption = 'matchScore' | 'date' | 'distance';

@@ -5,6 +5,7 @@ import { searchHimalayas } from './himalayas';
 import { searchTheMuse } from './themuse';
 import { searchRemoteOK } from './remoteok';
 import { searchStepStone } from './stepstone';
+import { searchJSearch } from './jsearch';
 import { geocodeLocation, calculateDistance } from '../geocoding';
 
 export async function searchAllSources(params: SearchParams): Promise<{
@@ -13,13 +14,14 @@ export async function searchAllSources(params: SearchParams): Promise<{
 }> {
   const geo = await geocodeLocation(params.location);
 
-  const [adzunaJobs, arbeitnowJobs, himalayasJobs, museJobs, remoteokJobs, stepstoneJobs] = await Promise.allSettled([
+  const [adzunaJobs, arbeitnowJobs, himalayasJobs, museJobs, remoteokJobs, stepstoneJobs, jsearchJobs] = await Promise.allSettled([
     searchAdzuna(params.title, params.location),
     searchArbeitnow(params.title),
     searchHimalayas(params.title),
     searchTheMuse(params.title),
     searchRemoteOK(params.title),
     searchStepStone(params.title, params.location),
+    searchJSearch(params.title, params.location),
   ]);
 
   const allJobs: Job[] = [
@@ -29,6 +31,7 @@ export async function searchAllSources(params: SearchParams): Promise<{
     ...(museJobs.status === 'fulfilled' ? museJobs.value : []),
     ...(remoteokJobs.status === 'fulfilled' ? remoteokJobs.value : []),
     ...(stepstoneJobs.status === 'fulfilled' ? stepstoneJobs.value : []),
+    ...(jsearchJobs.status === 'fulfilled' ? jsearchJobs.value : []),
   ];
 
   // Calculate distances if we have geocoding

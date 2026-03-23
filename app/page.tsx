@@ -126,10 +126,10 @@ export default function Home() {
             <div className="text-6xl mb-4">&#128640;</div>
             <h3 className="text-xl font-semibold text-gray-700">Ready to find your next role?</h3>
             <p className="text-gray-500 mt-2 max-w-md mx-auto">
-              Enter your details above and we will search across Adzuna, Arbeitnow, Himalayas, The Muse, RemoteOK, and StepStone to find the best matches for you.
+              Enter your details above and we will search across LinkedIn, Indeed, StepStone, Adzuna, Arbeitnow, Himalayas, The Muse, and RemoteOK to find the best matches for you.
             </p>
             <div className="flex justify-center gap-3 mt-6 flex-wrap">
-              {['Adzuna', 'Arbeitnow', 'Himalayas', 'The Muse', 'RemoteOK', 'StepStone'].map((platform) => (
+              {['LinkedIn', 'Indeed', 'StepStone', 'Adzuna', 'Arbeitnow', 'Himalayas', 'The Muse', 'RemoteOK'].map((platform) => (
                 <span
                   key={platform}
                   className="px-3 py-1.5 bg-white border border-gray-200 rounded-full text-sm text-gray-600 shadow-sm"
