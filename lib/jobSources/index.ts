@@ -4,6 +4,7 @@ import { searchArbeitnow } from './arbeitnow';
 import { searchHimalayas } from './himalayas';
 import { searchTheMuse } from './themuse';
 import { searchRemoteOK } from './remoteok';
+import { searchStepStone } from './stepstone';
 import { geocodeLocation, calculateDistance } from '../geocoding';
 
 export async function searchAllSources(params: SearchParams): Promise<{
@@ -12,12 +13,13 @@ export async function searchAllSources(params: SearchParams): Promise<{
 }> {
   const geo = await geocodeLocation(params.location);
 
-  const [adzunaJobs, arbeitnowJobs, himalayasJobs, museJobs, remoteokJobs] = await Promise.allSettled([
+  const [adzunaJobs, arbeitnowJobs, himalayasJobs, museJobs, remoteokJobs, stepstoneJobs] = await Promise.allSettled([
     searchAdzuna(params.title, params.location),
     searchArbeitnow(params.title),
     searchHimalayas(params.title),
     searchTheMuse(params.title),
     searchRemoteOK(params.title),
+    searchStepStone(params.title, params.location),
   ]);
 
   const allJobs: Job[] = [
@@ -26,6 +28,7 @@ export async function searchAllSources(params: SearchParams): Promise<{
     ...(himalayasJobs.status === 'fulfilled' ? himalayasJobs.value : []),
     ...(museJobs.status === 'fulfilled' ? museJobs.value : []),
     ...(remoteokJobs.status === 'fulfilled' ? remoteokJobs.value : []),
+    ...(stepstoneJobs.status === 'fulfilled' ? stepstoneJobs.value : []),
   ];
 
   // Calculate distances if we have geocoding

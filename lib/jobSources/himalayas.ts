@@ -1,15 +1,17 @@
 import { Job } from '../types';
 
 interface HimalayasJob {
-  id: string;
+  slug?: string;
   title: string;
   companyName: string;
-  locationRestrictions: string[];
-  description: string;
-  applicationLink: string;
-  pubDate: string;
-  seniority: string[];
-  categories: string[];
+  companySlug?: string;
+  locationRestrictions?: string[];
+  excerpt?: string;
+  description?: string;
+  applicationLink?: string;
+  pubDate?: string;
+  seniority?: string[];
+  categories?: string[];
 }
 
 export async function searchHimalayas(query: string): Promise<Job[]> {
@@ -22,13 +24,13 @@ export async function searchHimalayas(query: string): Promise<Job[]> {
     const data = await res.json();
     const results: HimalayasJob[] = data.jobs || [];
 
-    return results.map((r) => ({
-      id: `himalayas-${r.id}`,
+    return results.map((r, index) => ({
+      id: `himalayas-${index}-${r.title.replace(/\s+/g, '-').substring(0, 30)}`,
       title: r.title,
       company: r.companyName || 'Unknown',
       location: r.locationRestrictions?.join(', ') || 'Remote',
-      description: stripHtml(r.description || ''),
-      url: r.applicationLink || `https://himalayas.app/jobs/${r.id}`,
+      description: stripHtml(r.excerpt || r.description || ''),
+      url: r.applicationLink || `https://himalayas.app/jobs/${r.companySlug}`,
       postedDate: r.pubDate,
       source: 'himalayas' as const,
       experienceRequired: r.seniority?.join(', '),

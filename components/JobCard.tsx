@@ -9,6 +9,7 @@ const SOURCE_CONFIG: Record<string, { label: string; color: string }> = {
   himalayas: { label: 'Himalayas', color: 'bg-purple-100 text-purple-700' },
   themuse: { label: 'The Muse', color: 'bg-pink-100 text-pink-700' },
   remoteok: { label: 'RemoteOK', color: 'bg-orange-100 text-orange-700' },
+  stepstone: { label: 'StepStone', color: 'bg-teal-100 text-teal-700' },
 };
 
 interface JobCardProps {

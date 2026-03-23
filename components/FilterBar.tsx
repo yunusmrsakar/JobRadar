@@ -8,6 +8,7 @@ const SOURCE_LABELS: Record<JobSource, string> = {
   himalayas: 'Himalayas',
   themuse: 'The Muse',
   remoteok: 'RemoteOK',
+  stepstone: 'StepStone',
 };
 
 type SortOption = 'matchScore' | 'date' | 'distance';
