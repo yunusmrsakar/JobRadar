@@ -6,7 +6,7 @@ import MatchScore from './MatchScore';
 const SOURCE_CONFIG: Record<string, { label: string; color: string }> = {
   adzuna: { label: 'Adzuna', color: 'bg-green-100 text-green-700' },
   arbeitnow: { label: 'Arbeitnow', color: 'bg-blue-100 text-blue-700' },
-  jsearch: { label: 'LinkedIn/Indeed', color: 'bg-purple-100 text-purple-700' },
+  himalayas: { label: 'Himalayas', color: 'bg-purple-100 text-purple-700' },
   themuse: { label: 'The Muse', color: 'bg-pink-100 text-pink-700' },
   remoteok: { label: 'RemoteOK', color: 'bg-orange-100 text-orange-700' },
 };

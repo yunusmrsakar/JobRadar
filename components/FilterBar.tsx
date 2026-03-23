@@ -5,7 +5,7 @@ import { JobSource } from '@/lib/types';
 const SOURCE_LABELS: Record<JobSource, string> = {
   adzuna: 'Adzuna',
   arbeitnow: 'Arbeitnow',
-  jsearch: 'LinkedIn/Indeed',
+  himalayas: 'Himalayas',
   themuse: 'The Muse',
   remoteok: 'RemoteOK',
 };
