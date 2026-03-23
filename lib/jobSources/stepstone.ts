@@ -39,19 +39,19 @@ function parseJobListings(html: string): Job[] {
     const allTexts = extractVisibleTexts(truncated);
 
     // Extract title (first meaningful text after job-item-title)
-    const titleSection = truncated.match(/data-at="job-item-title"(.*?)data-at="job-item-company-name"/s);
+    const titleSection = truncated.match(/data-at="job-item-title"([\s\S]*?)data-at="job-item-company-name"/);
     const title = titleSection
       ? extractFirstVisibleText(titleSection[1])
       : allTexts[0] || '';
 
     // Extract company
-    const companySection = truncated.match(/data-at="job-item-company-name"(.*?)(?:data-at="job-item-location"|data-at="job-item-middle"|data-at="job-item-badge")/s);
+    const companySection = truncated.match(/data-at="job-item-company-name"([\s\S]*?)(?:data-at="job-item-location"|data-at="job-item-middle"|data-at="job-item-badge")/);
     const company = companySection
       ? extractFirstVisibleText(companySection[1])
       : '';
 
     // Extract location
-    const locationSection = truncated.match(/data-at="job-item-location"(.*?)(?:data-at="job-item-work-from-home"|data-at="job-item-timeago"|data-at="listing-save"|<\/article)/s);
+    const locationSection = truncated.match(/data-at="job-item-location"([\s\S]*?)(?:data-at="job-item-work-from-home"|data-at="job-item-timeago"|data-at="listing-save"|<\/article)/);
     const location = locationSection
       ? extractFirstVisibleText(locationSection[1])
       : '';
